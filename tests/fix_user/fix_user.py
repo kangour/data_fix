@@ -28,7 +28,7 @@ class DataFixDemo(ETLBase):
 
     target_model = Users
     # archive_dir = join(dirname(abspath(__file__)), "history_records")  # 存储到当前目录
-    archive_dir = "/Users/miccolo/etl_test"  # 建议不同的清洗任务存入不同的目录，避免数据被覆盖。
+    archive_dir = "/Users/miccolo/user_data_fix"  # 建议不同的清洗任务存入不同的目录，避免数据被覆盖。
     pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）开发阶段建议开启。
 
     # def filter(self) -> models.QuerySet:
