@@ -27,7 +27,7 @@ class DataFixDemo(ETLBase):
     """
 
     target_model = Users
-    archive_dir = join(dirname(abspath(__file__)), "fix_username_backup")  # 存储目录
+    archive_dir = join(dirname(abspath(__file__)), "fix_username_backup")  # 存储到当前目录
     pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
 
     # def filter(self) -> models.QuerySet:
