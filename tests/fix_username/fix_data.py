@@ -17,13 +17,13 @@ from tests.etl.etl_base import ETLBase
 from server.models import Users
 
 """
-数据清洗案例
+数据清洗
 """
 
 
 class FixUsernameDemo(ETLBase):
     """
-    RouteTask 表数据清洗案例
+    RouteTask 表数据清洗
     """
 
     # 需要清洗的数据表
