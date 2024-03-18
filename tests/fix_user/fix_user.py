@@ -26,10 +26,15 @@ class FixUsernameDemo(ETLBase):
     RouteTask 表数据清洗案例
     """
 
+    # 需要清洗的数据表
     target_model = Users
-    # archive_dir = "/Users/miccolo/data_changes/fix_username"  # 不同的清洗任务存入不同的目录，避免数据被覆盖。
-    archive_dir = f"{dirname(abspath(__file__))}/data_changes/fix_username"  # 存入当前目录
-    pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）开发阶段建议开启。
+
+    # 建议不同的清洗任务存入不同的目录，避免清洗记录混合在一起。
+    archive_dir = f"{dirname(abspath(__file__))}/data_changes/fix_task_name"
+    # archive_dir = "/Users/miccolo/data_changes/fix_task_name"
+
+    # 可选，预检查模式（只清洗，不提交）开发阶段建议开启。
+    pre_check_mode = True
 
     # def filter(self) -> models.QuerySet:
     #     """筛选条件 (可选)"""
