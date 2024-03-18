@@ -318,7 +318,7 @@ class ETLBase(unittest.TestCase):
         # 检查 archive_dir 是否存在
         if not os.path.exists(self.archive_dir):
             raise Exception(
-                f"数据归档根目录 {self.archive_dir} 不存在，为避免出错，请人工创建该目录，每次清洗任务请使用不同的归档目录。"
+                f"数据归档根目录 {self.archive_dir} 不存在，为避免出错，请人工创建该目录，不同的清洗任务请使用不同的归档目录。"
             )
 
         # 为数据库创建归档目录
