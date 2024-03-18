@@ -141,6 +141,8 @@ class ETLBase(unittest.TestCase):
 
         while True:
             # 查询 page_size 条数据
+            # 按 id 排序，用切片查询确保每次都能拿到足量数据
+            # 记录最新的 id 偏移量继续用 page_size 进行切片分页。
             records = (
                 self.filter()
                 .filter(id__gte=offset, id__lte=max_id)
