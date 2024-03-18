@@ -21,14 +21,14 @@ from server.models import Users
 """
 
 
-class DataFixDemo(ETLBase):
+class FixUsernameDemo(ETLBase):
     """
     RouteTask 表数据清洗案例
     """
 
     target_model = Users
-    # archive_dir = join(dirname(abspath(__file__)), "history_records")  # 存储到当前目录
-    archive_dir = "/Users/miccolo/user_data_fix"  # 建议不同的清洗任务存入不同的目录，避免数据被覆盖。
+    # archive_dir = "/Users/miccolo/data_changes/fix_username"  # 不同的清洗任务存入不同的目录，避免数据被覆盖。
+    archive_dir = f"{dirname(abspath(__file__))}/data_changes/fix_username"  # 存入当前目录
     pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）开发阶段建议开启。
 
     # def filter(self) -> models.QuerySet:
@@ -46,16 +46,14 @@ class DataFixDemo(ETLBase):
         #     record.username += "_test"
 
         # record.xxx = 777
-        # record.yyy = "yyy"
-        # record.org_id=2
 
         return record
 
-    def test_recover_xxx(self):
+    def test_recover_username(self):
         """数据恢复"""
         self.recover()
 
-    def test_fix_xxx(self):
+    def test_fix_username(self):
         """数据清洗"""
         self.start()
         # self.start(min_id=10)  # 开始的 ID
