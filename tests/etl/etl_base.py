@@ -135,6 +135,9 @@ class ETLBase(unittest.TestCase):
 
         Logger.info(f"数据清洗 {self.table_name} id 范围：[{min_id}, {max_id}]")
 
+        waiting_count = self.filter().filter(id__gte=min_id, id__lte=max_id).count()
+        Logger.info(f"等待清洗的数据有：{waiting_count} 条")
+
         # 分页查询，逐条清洗
         data_count = 0
         offset = min_id
