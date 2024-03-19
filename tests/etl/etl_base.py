@@ -218,6 +218,8 @@ class ETLBase(unittest.TestCase):
                     return
 
         Logger.info(f"清洗完成：共 {data_count} 条记录")
+        if self.pre_check_mode:
+            Logger.warning(f"预检模式已开启，未提交数据。")
         if data_count > 0:
             # 归档文件上传到 oss
             self._archive_to_oss(ArchiveSceneEnum.data_fix.value)
