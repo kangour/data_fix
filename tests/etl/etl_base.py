@@ -677,6 +677,10 @@ class ETLBase(unittest.TestCase):
         如果配置的 bucket name 是 express-image
         https://oss.console.aliyun.com/bucket/oss-cn-hangzhou/express-image/object?path=data_fix%2F
         """
+        # 预检模式，不上传
+        if self.pre_check_mode:
+            return
+
         if not scene:
             raise Exception(f"请传入数据变更场景。")
 
