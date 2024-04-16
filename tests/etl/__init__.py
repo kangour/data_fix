@@ -11,9 +11,12 @@ Logger = logging.getLogger("ETL")
 Logger.setLevel(logging.INFO)
 
 # 文件存储路径
-file_dir = os.path.abspath(__file__)
-file_dir = os.path.dirname(file_dir)
-log_file = f"{file_dir}/ETL.log"
+# file_dir = os.path.abspath(__file__)
+# file_dir = os.path.dirname(file_dir)
+# file_dir = os.path.dirname(file_dir)
+# log_file = f"{file_dir}/ETL.log"
+
+log_file = f"ETL.log"  # 日志文件，存储在当前执行脚本的目录
 
 rotating = RotatingFileHandler(log_file, maxBytes=1024 * 1024 * 100, backupCount=3)
 
