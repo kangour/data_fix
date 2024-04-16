@@ -38,7 +38,7 @@ class FixUsernameDemo(ETLBase):
 
     # def filter(self) -> models.QuerySet:
     #     """筛选条件 (可选)"""
-    #     return Users.objects.filter(name__contains="test")
+    #     return Users.objects.filter(name="test")
 
     def rule(self, record: Users):
         """
@@ -47,16 +47,17 @@ class FixUsernameDemo(ETLBase):
         """
         Logger.info(f"数据清洗测试 id: {record.id}")
 
+        # 幂等的清洗逻辑
         # if not record.username.endswith("_test"):
         #     record.username += "_test"
 
-        # record.xxx = 777
+        # record.area_id = 777
 
         return record
 
-    def test_recover_username(self):
-        """数据恢复"""
-        self.recover()
+    # def test_recover_username(self):
+    #     """数据恢复"""
+    #     self.recover()
 
     def test_fix_username(self):
         """数据清洗"""
