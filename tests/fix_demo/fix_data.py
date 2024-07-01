@@ -17,28 +17,34 @@ from tests.etl.etl_base import ETLBase
 from server.models import Users
 
 """
-数据清洗
+任务简介：
+
+
+任务流程：
+
+
+温馨提示：
+
+要把大象装冰箱，总共分几步？
+第一步：Models 导出: 配置好数据库后执行
+python manage.py inspectdb > server/models.py
+第二步：复制 fix_demo 目录，在新目录中创建归档文件夹 ./data_changes/fix_xxx
+第三步：编写 rule 规则方法。
 """
 
 
-class FixUsernameDemo(ETLBase):
+class FixXxx(ETLBase):
     """
-    RouteTask 表数据清洗
+    Users 表数据清洗
     """
 
-    # 需要清洗的数据表
-    target_model = Users
+    target_model = Users  # 需要清洗的数据表
+    archive_dir = f"{dirname(abspath(__file__))}/data_changes/fix_xxx"  # 当前目录新建的归档目录
+    pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）开发阶段建议开启。
 
-    # 建议不同的清洗任务存入不同的目录，避免清洗记录混合在一起。
-    # archive_dir = "/Users/miccolo/data_changes/fix_task_name"
-    archive_dir = f"{dirname(abspath(__file__))}/data_changes/fix_task_name"
-
-    # 可选，预检查模式（只清洗，不提交）开发阶段建议开启。
-    pre_check_mode = True
-
-    # def filter(self) -> models.QuerySet:
-    #     """筛选条件 (可选)"""
-    #     return Users.objects.filter(name="test")
+    def filter(self) -> models.QuerySet:
+        """筛选条件 (可选)"""
+        return Users.objects.filter(name="test")
 
     def rule(self, record: Users):
         """
@@ -51,13 +57,10 @@ class FixUsernameDemo(ETLBase):
 
         return record
 
-    # def test_recover_username(self):
+    # def test_recover_xxx(self):
     #     """数据恢复"""
     #     self.recover()
 
-    def test_fix_username(self):
+    def test_fix_xxx(self):
         """数据清洗"""
         self.start()
-        # self.start(min_id=10)  # 开始的 ID
-        # self.start(max_id=20)  # 结束的 ID
-        # self.start(min_id=27, max_id=27)  # 同时指定开始和结束

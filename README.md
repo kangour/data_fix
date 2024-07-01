@@ -119,14 +119,14 @@ from server.models import Users
 
 
 class FixUsername(ETLBase):
-	target_model = Users
-	archive_dir = "/Users/xxx/etl_archive"
-	"""预检模式"""
-	pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
+    target_model = Users
+    archive_dir = "/Users/xxx/etl_archive"
+    """预检模式"""
+    pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
 
-	def rule(self, record: Users): pass
+    def rule(self, record: Users): pass
 
-	def test_fix_name(self, record: Users): pass
+    def test_fix_name(self, record: Users): pass
 ```
 
 ### 自定义条件筛选
@@ -142,18 +142,18 @@ from server.models import Users
 
 
 class FixUsername(ETLBase):
-	target_model = Users
-	archive_dir = "/Users/xxx/etl_archive"
-	pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
-	page_size = 100  # 可选，分页尺寸
-	
-	def filter(self) -> models.QuerySet:
-		"""筛选条件 (可选)"""
-		return Users.objects.filter().exclude(name__contains="test")
+    target_model = Users
+    archive_dir = "/Users/xxx/etl_archive"
+    pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
+    page_size = 100  # 可选，分页尺寸
+    
+    def filter(self) -> models.QuerySet:
+        """筛选条件 (可选)"""
+        return Users.objects.filter().exclude(name__contains="test")
 
-	def rule(self, record: Users): pass
+    def rule(self, record: Users): pass
 
-	def test_fix_name(self, record: Users): pass
+    def test_fix_name(self, record: Users): pass
 ```
 
 ### 实现清洗规则
@@ -167,19 +167,19 @@ from server.models import Users
 
 
 class FixUsername(ETLBase):
-	target_model = Users
-	archive_dir = "/Users/xxx/etl_archive"
-	pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
-	page_size = 100  # 可选，分页尺寸
-	
-	def filter(self) -> models.QuerySet: pass
+    target_model = Users
+    archive_dir = "/Users/xxx/etl_archive"
+    pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
+    page_size = 100  # 可选，分页尺寸
+    
+    def filter(self) -> models.QuerySet: pass
 
-	def rule(self, record: Users):
-		"""规则方法中，支持同时更改多个属性"""
-		record.name = "test"
-		record.org_id = 1
+    def rule(self, record: Users):
+        """规则方法中，支持同时更改多个属性"""
+        record.name = "test"
+        record.org_id = 1
 
-	def test_fix_name(self, record: Users): pass
+    def test_fix_name(self, record: Users): pass
 ```
 
 ### 自定义 ID 范围
@@ -194,20 +194,20 @@ from server.models import Users
 
 
 class FixUsername(ETLBase):
-	target_model = Users
-	archive_dir = "/Users/xxx/etl_archive"
-	pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
-	page_size = 100  # 可选，分页尺寸
-	
-	def filter(self) -> models.QuerySet: pass
+    target_model = Users
+    archive_dir = "/Users/xxx/etl_archive"
+    pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
+    page_size = 100  # 可选，分页尺寸
+    
+    def filter(self) -> models.QuerySet: pass
 
-	def rule(self, record: Users): pass
+    def rule(self, record: Users): pass
 
-	def test_fix_name(self, record: Users):
-		self.start()
-		"""指定 ID 的最小值和最大值"""
-		# self.start(min_id=100)
-		# self.start(min_id=1, max_id=10)
+    def test_fix_name(self, record: Users):
+        self.start()
+        """指定 ID 的最小值和最大值"""
+        # self.start(min_id=100)
+        # self.start(min_id=1, max_id=10)
 ```
 
 ### 自定义分页尺寸
@@ -221,17 +221,17 @@ from server.models import Users
 
 
 class FixUsername(ETLBase):
-	target_model = Users
-	archive_dir = "/Users/xxx/etl_archive"
-	pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
-	"""分页尺寸"""
-	page_size = 100  # 可选
-	
-	def filter(self) -> models.QuerySet: pass
-		
-	def rule(self, record: Users): pass
+    target_model = Users
+    archive_dir = "/Users/xxx/etl_archive"
+    pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
+    """分页尺寸"""
+    page_size = 100  # 可选
+    
+    def filter(self) -> models.QuerySet: pass
+        
+    def rule(self, record: Users): pass
 
-	def test_fix_name(self, record: Users): pass
+    def test_fix_name(self, record: Users): pass
 ```
 
 ### 数据恢复
@@ -246,20 +246,20 @@ from server.models import Users
 
 
 class FixUsername(ETLBase):
-	target_model = Users
-	archive_dir = "/Users/xxx/etl_archive"
-	pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
-	page_size = 100  # 可选，分页尺寸
-	
-	def filter(self) -> models.QuerySet: pass
+    target_model = Users
+    archive_dir = "/Users/xxx/etl_archive"
+    pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
+    page_size = 100  # 可选，分页尺寸
+    
+    def filter(self) -> models.QuerySet: pass
 
-	def rule(self, record: Users): pass
+    def rule(self, record: Users): pass
 
-	def test_recover_name(self):
-		"""数据恢复"""
-		self.recover()
+    def test_recover_name(self):
+        """数据恢复"""
+        self.recover()
 
-	def test_fix_name(self, record: Users): pass
+    def test_fix_name(self, record: Users): pass
 ```
 
 ### 完整案例
@@ -272,44 +272,39 @@ from tests.etl import Logger
 
 
 class FixUsername(ETLBase):
-	"""
-	Users 表数据清洗案例
-	"""
+    """
+    Users 表数据清洗案例
+    """
 
-	target_model = Users
-	archive_dir = "/Users/jietan/etl_test"
-	# pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
+    target_model = Users
+    archive_dir = "/Users/jietan/etl_test"
+    # pre_check_mode = True  # 可选，预检查模式（只清洗，不提交）
 
-	def filter(self) -> models.QuerySet:
-		"""筛选条件 过滤掉无需清洗的数据"""
-		return Users.objects.filter().exclude(name__contains="test")
+    def filter(self) -> models.QuerySet:
+        """筛选条件 过滤掉无需清洗的数据"""
+        return Users.objects.filter().exclude(name__contains="test")
 
-	def rule(self, record: Users):
-		"""
-		清洗规则
-		为 name 字段添加 _test 后缀
-		"""
-		Logger.info(f"数据清洗测试 id: {record.id}")
+    def rule(self, record: Users):
+        """
+        清洗规则
+        为 name 字段添加 _test 后缀
+        """
+        Logger.info(f"数据清洗测试 id: {record.id}")
 
-		# 幂等检查，如果有判断依据
-		# if not record.name.endswith("_test"):
-		# 	record.name += "_test"
+        record.username += "_test"
 
-		# record.oid = 10
-		record.username = record.username + "_test"
+        return record
 
-		return record
+    def test_recover_name(self):
+        """数据恢复"""
+        self.recover()
 
-	def test_recover_name(self):
-		"""数据恢复"""
-		self.recover()
-
-	def test_fix_name(self):
-		"""数据清洗"""
-		self.start()
-		# self.start(min_id=10)
-		# self.start(max_id=20)
-		# self.start(min_id=27, max_id=27)
+    def test_fix_name(self):
+        """数据清洗"""
+        self.start()
+        # self.start(min_id=10)
+        # self.start(max_id=20)
+        # self.start(min_id=27, max_id=27)
 
 
 ```
