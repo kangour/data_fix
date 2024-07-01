@@ -33,6 +33,8 @@ pip install -r requirements.txt
 
 模型存储路径: server/models.py
 
+> models.py 名称可以自定义。
+
 ```shell
 python manage.py inspectdb > server/models.py
 ```
