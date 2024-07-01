@@ -47,11 +47,7 @@ class FixUsernameDemo(ETLBase):
         """
         Logger.info(f"数据清洗测试 id: {record.id}")
 
-        # 幂等的清洗逻辑
-        # if not record.username.endswith("_test"):
-        #     record.username += "_test"
-
-        # record.area_id = 777
+        record.username += "_test"
 
         return record
 
