@@ -660,7 +660,7 @@ class ETLBase(unittest.TestCase):
         # 获取 src_dir 的同级目录
         zip_dir = os.path.dirname(src_dir)
 
-        out_file = f"archive-{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        out_file = f"archive-{self.database}-{self.table_name}-{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
         out_file = os.path.join(zip_dir, out_file)
         if os.path.exists(out_file):
             Logger.warning(f"文件 {out_file} 已存在")
