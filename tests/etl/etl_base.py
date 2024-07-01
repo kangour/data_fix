@@ -133,7 +133,9 @@ class ETLBase(unittest.TestCase):
         if self.page_size < 1:
             raise Exception(f"page_size 不能小于 1。")
 
-        Logger.info(f"数据清洗 {self.database}@{self.table_name}.id 范围：[{min_id}, {max_id}]")
+        Logger.info(
+            f"数据清洗 {self.database}@{self.table_name}.id 范围：[{min_id}, {max_id}]"
+        )
 
         waiting_count = self.filter().filter(id__gte=min_id, id__lte=max_id).count()
         Logger.info(f"符合条件，即将清洗的数据有：{waiting_count} 条")
@@ -147,7 +149,9 @@ class ETLBase(unittest.TestCase):
             # 查询 page_size 条数据
             # 按 id 排序，用切片查询确保每次都能拿到足量数据
             # 记录最新的 id 偏移量继续用 page_size 进行切片分页。
-            records = filters.filter(id__gte=offset, id__lte=max_id).order_by("id")[: self.page_size]
+            records = filters.filter(id__gte=offset, id__lte=max_id).order_by("id")[
+                : self.page_size
+            ]
             if not records:
                 break
 
