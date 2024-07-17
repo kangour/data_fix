@@ -24,7 +24,6 @@ from server.models import Users
 
 
 温馨提示：
-
 要把大象装冰箱，总共分几步？
 第一步：Models 导出: 配置好数据库后执行
 python manage.py inspectdb > server/models.py
