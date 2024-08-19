@@ -186,6 +186,11 @@ class ETLBase(unittest.TestCase):
                     has_field_changed = False
                     for field_name, field_value in origin_data.items():
                         changed_value = changed_data[field_name]
+                        # 避免更新空值
+                        if changed_value is None:
+                            continue
+                        if field_value == "":
+                            continue
                         if field_value != changed_value:
                             _field_meta = _record._meta.get_field(field_name)
                             if hasattr(_field_meta, "auto_now"):
