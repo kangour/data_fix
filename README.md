@@ -36,7 +36,16 @@ pip install -r requirements.txt
 > models.py 名称可以自定义。
 
 ```shell
+# 导出所有表
 python manage.py inspectdb > server/models.py
+# 指定表名导出
+python manage.py inspectdb users > server/models.py
+# 导出多个表
+python manage.py inspectdb users uavs > server/models.py
+# 导出并合并到现有 models.py 文件
+python manage.py inspectdb users >> server/models.py
+
+
 ```
 
 ### 编写数据清洗脚本
