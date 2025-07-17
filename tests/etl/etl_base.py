@@ -640,7 +640,8 @@ class ETLBase(unittest.TestCase):
             # todo 放入队列，异步提交
             if records:
                 # 还原旧数据
-                records.update(**archive_origin_value)
+                if self.pre_check_mode is False:
+                    records.update(**archive_origin_value)
                 Logger.info(f"恢复成功: {self.database}@{table_name}.id={record_id}")
             else:
                 # 创建新数据
