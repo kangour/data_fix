@@ -319,8 +319,12 @@ class ETLBase(unittest.TestCase):
             )
             recover_count += 1
 
-        # 归档文件上传到 oss
         Logger.info(f"恢复完成：共 {recover_count} 次字段变更")
+        if self.pre_check_mode:
+            Logger.warning(f"预检模式已开启，未提交数据。")
+            return
+
+        # 归档文件上传到 oss
         if recover_count > 0:
             self._archive_to_oss(ArchiveSceneEnum.data_recover.value)
 
